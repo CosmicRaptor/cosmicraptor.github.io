@@ -63,8 +63,6 @@ flutter:
   #   - images/a_dot_ham.jpeg
   shaders:
     - shaders/matrix.frag
-    - shaders/test.frag
-    - shaders/refraction.frag
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
