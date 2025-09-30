@@ -8,7 +8,7 @@ uniform float iTime;
 uniform vec4  iMouse;
 
 // --- Tunables ---
-const int   ITERATIONS        = 40;
+const int   ITERATIONS        = 20;
 const float SPEED             = 1.0;
 const float STRIP_CHARS_MIN   =  7.0;
 const float STRIP_CHARS_MAX   = 40.0;
