@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../glass_card.dart';
 
@@ -41,12 +42,12 @@ class ContactSection extends StatelessWidget {
                   onPressed: () => _launchURL('aupathak1234@gmail.com', isMail: true),
                 ),
                 IconButton(
-                  icon: const Icon(Icons.code),
+                  icon: const FaIcon(FontAwesomeIcons.github),
                   tooltip: 'GitHub',
                   onPressed: () => _launchURL('https://github.com/CosmicRaptor/'),
                 ),
                 IconButton(
-                  icon: const Icon(Icons.person),
+                  icon: const FaIcon(FontAwesomeIcons.linkedin),
                   tooltip: 'LinkedIn',
                   onPressed: () => _launchURL('https://www.linkedin.com/in/aryan-pathak-67a39b290/'),
                 ),

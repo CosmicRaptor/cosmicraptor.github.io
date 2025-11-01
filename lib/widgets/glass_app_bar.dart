@@ -1,9 +1,17 @@
 import 'dart:ui' as ui;
-
 import 'package:flutter/material.dart';
 
 class GlassAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const GlassAppBar({super.key});
+  final VoidCallback onProjectsPressed;
+  final VoidCallback onAboutPressed;
+  final VoidCallback onContactPressed;
+
+  const GlassAppBar({
+    super.key,
+    required this.onProjectsPressed,
+    required this.onAboutPressed,
+    required this.onContactPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +19,7 @@ class GlassAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: BackdropFilter(
         filter: ui.ImageFilter.blur(sigmaX: 10, sigmaY: 10),
         child: Container(
-          color: Colors.white.withOpacity(0.1),
+          color: Colors.white.withValues(alpha: 0.1),
           alignment: Alignment.center,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -22,9 +30,9 @@ class GlassAppBar extends StatelessWidget implements PreferredSizeWidget {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    TextButton(onPressed: () {}, child: const Text('Projects')),
-                    TextButton(onPressed: () {}, child: const Text('About')),
-                    TextButton(onPressed: () {}, child: const Text('Contact')),
+                    TextButton(onPressed: onProjectsPressed, child: const Text('Projects')),
+                    TextButton(onPressed: onAboutPressed, child: const Text('About')),
+                    TextButton(onPressed: onContactPressed, child: const Text('Contact')),
                   ],
                 ),
               ],

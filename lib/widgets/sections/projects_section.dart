@@ -6,14 +6,6 @@ import '../glass_card.dart';
 class ProjectsSection extends StatelessWidget {
   const ProjectsSection({super.key});
 
-  Future<void> _launchURL(String url) async {
-    final Uri uri = Uri.parse(url);
-    if (!await launchUrl(uri)) {
-      // Could show a snackbar or dialog
-      debugPrint('Could not launch $url');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return GlassCard(
@@ -24,32 +16,43 @@ class ProjectsSection extends StatelessWidget {
           children: [
             const Text('Featured Projects',
                 style: TextStyle(
-                    fontSize: 24,
+                    fontSize: 28,
                     fontWeight: FontWeight.bold,
                     color: Colors.white)),
             const SizedBox(height: 24),
-            _ProjectEntry(
-              title: 'Interactive Portfolio Website',
-              description:
-              "My personal portfolio, built with Flutter Web to showcase my projects. It features a dynamic 'Matrix' style background using a custom GLSL fragment shader for a real-time, interactive effect.",
-              technologies: const ['Flutter Web', 'GLSL Shaders', 'dart:ui'],
-              sourceCodeUrl: 'https://github.com/CosmicRaptor/cosmicraptor.github.io', // Example URL
-            ),
-            const Divider(height: 48),
             _ProjectEntry(
               title: 'SafeYatri (SIH 2025)',
               description:
               'A tourist safety prototype with AR navigation, BLE mesh networking for offline location sharing, and on-device ML for real-time route safety prediction. Cleared internal Smart India Hackathon.',
               technologies: const ['Flutter', 'ARCore', 'BLE Mesh', 'ONNX'],
-              sourceCodeUrl: 'https://github.com/CosmicRaptor/SafeYatri', // Example URL
             ),
             const Divider(height: 48),
             _ProjectEntry(
               title: 'Peer-to-Peer Payments MVP',
               description:
               'As an intern, I developed a cross-platform MVP for secure P2P payments, integrating native Java/Swift modules and high-performance Rust libraries for cryptography via FFI.',
-              technologies: const ['Flutter', 'Native Integration', 'Rust FFI', 'Cryptography'],
-              // No links as it's likely private
+              technologies: const ['Flutter', 'Native Integration', 'Rust FFI', 'Cryptography', 'Github Actions', 'XCode Cloud'],
+            ),
+            const Divider(height: 48),
+            _ProjectEntry(
+              title: 'YugSmriti',
+              description: 'Sole mobile developer for a hackathon-winning project combining Flutter and ARCore to create interactive historical timelines, AR tours, and rich multimedia content for immersive learning experiences. Won a regional hackathon with this project.',
+              technologies: const ['Flutter', 'ARCore', 'Firebase'],
+              sourceCodeUrl: 'https://github.com/CosmicRaptor/yugsmriti',
+            ),
+            const Divider(height: 48),
+            _ProjectEntry(
+              title: 'SheSafe',
+              description: 'Hackathon-finalist women safety app using Flutter and Java native modules. Built an accessibility service that triggered panic events via triple volume-down press. Integrated BLE distress beacons, dangerous-area warnings, and a RAG-based chatbot for POSH Act legal queries.',
+              technologies: const ['Flutter', 'Java', 'BLE', 'Firebase'],
+            ),
+            const Divider(height: 48),
+            _ProjectEntry(
+              title: 'Interactive Portfolio Website',
+              description:
+              "My personal portfolio, built with Flutter Web to showcase my projects. It features a dynamic 'Matrix' style background using a custom GLSL fragment shader for a real-time, interactive effect.",
+              technologies: const ['Flutter Web', 'GLSL Shaders', 'dart:ui'],
+              sourceCodeUrl: 'https://github.com/CosmicRaptor/cosmicraptor.github.io', // Example URL
             ),
           ],
         ),
@@ -97,7 +100,7 @@ class _ProjectEntry extends StatelessWidget {
           children: technologies
               .map((tech) => Chip(
             label: Text(tech),
-            backgroundColor: Colors.green.withOpacity(0.1),
+            backgroundColor: Colors.green.withValues(alpha: 0.1),
             side: BorderSide.none,
           ))
               .toList(),

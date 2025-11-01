@@ -5,26 +5,40 @@ class HeroSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const heroTextStyle = TextStyle(
+      fontFamily: 'system-ui', // Matches the CSS
+      fontWeight: FontWeight.bold,
+      color: Color.fromRGBO(255, 255, 255, 0.7), // Semi-transparent white
+      shadows: [
+        // This creates the "glow"
+        Shadow(
+          blurRadius: 10.0,
+          color: Color.fromRGBO(255, 255, 255, 0.5),
+        ),
+        Shadow(
+          blurRadius: 20.0,
+          color: Color.fromRGBO(255, 255, 255, 0.3),
+        ),
+      ],
+    );
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 80.0),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'Aryan Pathak',
+            "Aryan Pathak",
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 64,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-              shadows: [Shadow(blurRadius: 10, color: Colors.green.withOpacity(0.5))],
-            ),
+            style: heroTextStyle.copyWith(fontSize: 72),
           ),
-          const SizedBox(height: 16),
-          // TODO: Replace with better tagline
-          const Text(
-            'I build beautiful and performant cross-platform applications.',
+          SizedBox(height: 16),
+          Text(
+            "I build beautiful and performant cross-platform applications.",
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 22, color: Colors.white70),
+            style: heroTextStyle.copyWith(
+              fontSize: 32,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ],
       ),

@@ -23,19 +23,39 @@ class _PortfolioPageState extends State<PortfolioPage> {
   late final Stopwatch _stopwatch;
   Offset _mousePosition = Offset.zero;
 
+  final GlobalKey heroKey = GlobalKey();
+  final GlobalKey aboutKey = GlobalKey();
+  final GlobalKey projectsKey = GlobalKey();
+  final GlobalKey skillsKey = GlobalKey();
+  final GlobalKey contactKey = GlobalKey();
+
   @override
   void initState() {
     super.initState();
-    // Make sure your shader file is in assets/shaders/matrix.frag
     _programFuture = ui.FragmentProgram.fromAsset('shaders/matrix.frag');
     _stopwatch = Stopwatch()..start();
+  }
+
+  void _scrollTo(GlobalKey key) {
+    if (key.currentContext != null) {
+      Scrollable.ensureVisible(
+        key.currentContext!,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.easeInOut,
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: const GlassAppBar(),
+      appBar: GlassAppBar(
+
+        onProjectsPressed: () => _scrollTo(projectsKey),
+        onAboutPressed: () => _scrollTo(aboutKey),
+        onContactPressed: () => _scrollTo(contactKey),
+      ),
       body: FutureBuilder<ui.FragmentProgram>(
         future: _programFuture,
         builder: (context, snapshot) {
@@ -57,7 +77,13 @@ class _PortfolioPageState extends State<PortfolioPage> {
                   stopwatch: _stopwatch,
                   mousePosition: _mousePosition,
                 ),
-                const PortfolioContent(),
+                PortfolioContent(
+                  heroKey: heroKey,
+                  aboutKey: aboutKey,
+                  projectsKey: projectsKey,
+                  skillsKey: skillsKey,
+                  contactKey: contactKey,
+                ),
               ],
             ),
           );
@@ -68,28 +94,54 @@ class _PortfolioPageState extends State<PortfolioPage> {
 }
 
 class PortfolioContent extends StatelessWidget {
-  const PortfolioContent({super.key});
+  final GlobalKey heroKey;
+  final GlobalKey aboutKey;
+  final GlobalKey projectsKey;
+  final GlobalKey skillsKey;
+  final GlobalKey contactKey;
+
+  const PortfolioContent({
+    super.key,
+    required this.heroKey,
+    required this.aboutKey,
+    required this.projectsKey,
+    required this.skillsKey,
+    required this.contactKey,
+  });
 
   @override
   Widget build(BuildContext context) {
+    const double appBarHeight = kToolbarHeight;
     return LayoutBuilder(builder: (context, constraints) {
       return Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 900),
-          child: const SingleChildScrollView(
-            padding: EdgeInsets.symmetric(vertical: 64.0, horizontal: 32.0),
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(vertical: 64.0, horizontal: 32.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                HeroSection(),
-                SizedBox(height: 120),
-                AboutSection(),
-                SizedBox(height: 48),
-                ProjectsSection(),
-                SizedBox(height: 48),
-                SkillsSection(),
-                SizedBox(height: 48),
-                ContactSection(),
+                HeroSection(key: heroKey),
+
+                // --- AboutSection ---
+                const SizedBox(height: 120 - appBarHeight),
+                Container(key: aboutKey, height: appBarHeight),
+                const AboutSection(),
+
+                // --- ProjectsSection ---
+                const SizedBox(height: 0),
+                Container(key: projectsKey, height: appBarHeight),
+                const ProjectsSection(),
+
+                // --- SkillsSection ---
+                const SizedBox(height: 0), // (48 - 56)
+                Container(key: skillsKey, height: appBarHeight),
+                const SkillsSection(),
+
+                // --- ContactSection ---
+                const SizedBox(height: 0), // (48 - 56)
+                Container(key: contactKey, height: appBarHeight),
+                const ContactSection(),
               ],
             ),
           ),
