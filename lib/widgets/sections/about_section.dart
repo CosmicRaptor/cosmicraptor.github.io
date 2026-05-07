@@ -20,7 +20,12 @@ class AboutSection extends StatelessWidget {
                     color: Colors.white)),
             SizedBox(height: 16),
             Text(
-              "I'm a passionate Information Technology student from Mumbai with a deep interest in creating performant and user-centric mobile applications. I thrive on solving complex problems, from building secure communication platforms to exploring the intersection of mobile tech with AR and on-device machine learning.",
+              "I'm a passionate Information Technology student at Thadomal Shahani Engineering College (Mumbai University), graduating in 2027. "
+              "I specialize in building performant, user-centric mobile applications across iOS, Android, and the web. "
+              "Winner of the Apple Swift Student Challenge 2026 and finalist at Smart India Hackathon 2025, "
+              "I thrive on solving complex problems — from GPU-accelerated 3D rendering and AR-enhanced education to secure peer-to-peer payment systems.\n\n"
+              "I currently lead a 15-member team (dev, design, DevOps) building and maintaining my college's official app, "
+              "scaling adoption to 2000+ users (80% of students) with features like railway concession passes, attendance tracking, and notes uploading.",
               style: TextStyle(
                   fontSize: 16, color: Colors.white70, height: 1.5),
             ),

@@ -2,14 +2,16 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 
 class GlassAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final VoidCallback onProjectsPressed;
   final VoidCallback onAboutPressed;
+  final VoidCallback onExperiencePressed;
+  final VoidCallback onProjectsPressed;
   final VoidCallback onContactPressed;
 
   const GlassAppBar({
     super.key,
-    required this.onProjectsPressed,
     required this.onAboutPressed,
+    required this.onExperiencePressed,
+    required this.onProjectsPressed,
     required this.onContactPressed,
   });
 
@@ -30,8 +32,9 @@ class GlassAppBar extends StatelessWidget implements PreferredSizeWidget {
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    TextButton(onPressed: onProjectsPressed, child: const Text('Projects')),
                     TextButton(onPressed: onAboutPressed, child: const Text('About')),
+                    TextButton(onPressed: onExperiencePressed, child: const Text('Experience')),
+                    TextButton(onPressed: onProjectsPressed, child: const Text('Projects')),
                     TextButton(onPressed: onContactPressed, child: const Text('Contact')),
                   ],
                 ),

@@ -26,26 +26,17 @@ class HeroSection extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 80.0),
       child: Column(
         children: [
-          // Text(
-          //   'Aryan Pathak',
-          //   textAlign: TextAlign.center,
-          //   style: TextStyle(
-          //     fontSize: 64,
-          //     fontWeight: FontWeight.bold,
-          //     color: Colors.white,
-          //     shadows: [Shadow(blurRadius: 10, color: Colors.green.withOpacity(0.5))],
-          //   ),
-          // ),
           GlassTextWeb('Aryan Pathak', fontSize: 64),
           const SizedBox(height: 16),
-          // const Text(
-          //   'I build beautiful and performant cross-platform applications.',
-          //   textAlign: TextAlign.center,
-          //   style: TextStyle(fontSize: 26, color: Colors.white70),
-          // ),
           GlassTextWeb(
-            'I build beautiful and performant cross-platform applications.',
-            fontSize: 26,
+            'Mobile Developer · Apple Swift Student Challenge Winner',
+            fontSize: 24,
+          ),
+          const SizedBox(height: 12),
+          const Text(
+            'B.E. Information Technology · TSEC, Mumbai University · CGPA 8.3',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 16, color: Colors.white54),
           ),
         ],
       ),

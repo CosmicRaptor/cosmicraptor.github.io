@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 
 import '../widgets/glass_app_bar.dart';
 import '../widgets/sections/about_section.dart';
+import '../widgets/sections/achievements_section.dart';
 import '../widgets/sections/contact_section.dart';
+import '../widgets/sections/experience_section.dart';
 import '../widgets/sections/hero_section.dart';
 import '../widgets/sections/projects_section.dart';
 import '../widgets/sections/skills_section.dart';
@@ -25,8 +27,10 @@ class _PortfolioPageState extends State<PortfolioPage> {
 
   final GlobalKey heroKey = GlobalKey();
   final GlobalKey aboutKey = GlobalKey();
+  final GlobalKey experienceKey = GlobalKey();
   final GlobalKey projectsKey = GlobalKey();
   final GlobalKey skillsKey = GlobalKey();
+  final GlobalKey achievementsKey = GlobalKey();
   final GlobalKey contactKey = GlobalKey();
 
   @override
@@ -51,9 +55,9 @@ class _PortfolioPageState extends State<PortfolioPage> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: GlassAppBar(
-
-        onProjectsPressed: () => _scrollTo(projectsKey),
         onAboutPressed: () => _scrollTo(aboutKey),
+        onExperiencePressed: () => _scrollTo(experienceKey),
+        onProjectsPressed: () => _scrollTo(projectsKey),
         onContactPressed: () => _scrollTo(contactKey),
       ),
       body: FutureBuilder<ui.FragmentProgram>(
@@ -80,8 +84,10 @@ class _PortfolioPageState extends State<PortfolioPage> {
                 PortfolioContent(
                   heroKey: heroKey,
                   aboutKey: aboutKey,
+                  experienceKey: experienceKey,
                   projectsKey: projectsKey,
                   skillsKey: skillsKey,
+                  achievementsKey: achievementsKey,
                   contactKey: contactKey,
                 ),
               ],
@@ -96,16 +102,20 @@ class _PortfolioPageState extends State<PortfolioPage> {
 class PortfolioContent extends StatelessWidget {
   final GlobalKey heroKey;
   final GlobalKey aboutKey;
+  final GlobalKey experienceKey;
   final GlobalKey projectsKey;
   final GlobalKey skillsKey;
+  final GlobalKey achievementsKey;
   final GlobalKey contactKey;
 
   const PortfolioContent({
     super.key,
     required this.heroKey,
     required this.aboutKey,
+    required this.experienceKey,
     required this.projectsKey,
     required this.skillsKey,
+    required this.achievementsKey,
     required this.contactKey,
   });
 
@@ -128,18 +138,28 @@ class PortfolioContent extends StatelessWidget {
                 Container(key: aboutKey, height: appBarHeight),
                 const AboutSection(),
 
+                // --- ExperienceSection ---
+                const SizedBox(height: 0),
+                Container(key: experienceKey, height: appBarHeight),
+                const ExperienceSection(),
+
                 // --- ProjectsSection ---
                 const SizedBox(height: 0),
                 Container(key: projectsKey, height: appBarHeight),
                 const ProjectsSection(),
 
                 // --- SkillsSection ---
-                const SizedBox(height: 0), // (48 - 56)
+                const SizedBox(height: 0),
                 Container(key: skillsKey, height: appBarHeight),
                 const SkillsSection(),
 
+                // --- AchievementsSection ---
+                const SizedBox(height: 0),
+                Container(key: achievementsKey, height: appBarHeight),
+                const AchievementsSection(),
+
                 // --- ContactSection ---
-                const SizedBox(height: 0), // (48 - 56)
+                const SizedBox(height: 0),
                 Container(key: contactKey, height: appBarHeight),
                 const ContactSection(),
               ],
